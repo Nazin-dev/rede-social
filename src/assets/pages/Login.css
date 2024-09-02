@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --gradient-color: linear-gradient(135deg, #203040, #000000);
+  --btn-color-blue: #0064E0; 
+  --input-background-color: #1C2A33;
+  --border-placeholder-color: #455A67;
+  --create-account-color: #3A76A8;
+}
+
+body {
+  background: var(--gradient-color);
+  font-family: "Inter", sans-serif;
+  font-weight: 900;  
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50vh;
+  margin-top: 80px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.input-login {
+  height: 53px;
+  border-radius: 10px;
+  background-color: var(--input-background-color);
+  border: var(--border-placeholder-color) solid 1px;
+  color: white;
+  padding-left: 18px;
+}
+
+.input-login:focus {
+  outline: none;
+  border: 2px solid var(--border-placeholder-color); /* Substitua #4a90e2 pela cor desejada */
+}
+
+.input-login::placeholder {
+  color: var(--border-placeholder-color);
+}
+
+/* Button */
+.login-button {
+  background-color: var(--btn-color-blue);
+  color: white;
+  border: none;
+  height: 42px;
+  border-radius: 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.recover-password {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.creat-account-button {
+  background-color: transparent;
+  color: var(--create-account-color);
+  border: var(--create-account-color) solid 2px;
+  height: 42px;
+  border-radius: 20px;
+  margin-top: 120px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.melonzone {
+  width: 200px;
+  height: 27.63px;
+}
+
+.img-melonzone {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+}
