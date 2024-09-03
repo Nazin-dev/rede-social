@@ -1,5 +1,6 @@
 import './Login.css';
 import melonzone from '../img/melonzone.png'
+import Input from '../components/Input.jsx';
 
 function Login() {
   return (
@@ -8,8 +9,8 @@ function Login() {
         <div className='img-melonzone'>
         <img className='melonzone' src={melonzone} alt="" />
         </div>
-        <input type='email' className="input-login" placeholder="Email"/>
-        <input type='password' className="input-login" placeholder="Senha"/>
+        <Input type="email" name="Email" />
+        <Input type="password" name="Senha"/>
         <button type='submit' className='login-button'>Entrar</button>
         <a  href='#' className='recover-password'>Esqueceu a senha?</a>
         <button type='submit' className='creat-account-button'>Criar nova conta</button>

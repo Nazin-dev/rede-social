@@ -10,6 +10,9 @@
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--gradient-color);
   font-family: "Inter", sans-serif;
   font-weight: 900;  
@@ -17,14 +20,14 @@ body {
   background-attachment: fixed;
 }
 
-.login-container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -37,7 +40,7 @@ body {
 
 
 /* Button */
-.login-button {
+.button {
   background-color: var(--btn-color-blue);
   color: white;
   border: none;
@@ -47,23 +50,25 @@ body {
   font-weight: 600;
 }
 
-.recover-password {
+.access-account {
   display: flex;
   justify-content: center;
-  color: white;
-  text-decoration: none;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
+  color: white;
+  margin-top: 18vh;
 }
 
-.creat-account-button {
-  background-color: transparent;
-  color: var(--create-account-color);
-  border: var(--create-account-color) solid 2px;
-  height: 42px;
-  border-radius: 20px;
-  margin-top: 120px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
+.access-account a {
+  margin-left: 3px;
+  color: var(--btn-color-blue);
+  text-decoration: none;
+}
+
+
+
+.file-selected::placeholder {
+  color: var(--border-placeholder-color);
 }
 
 .melonzone {

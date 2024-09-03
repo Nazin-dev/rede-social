@@ -1,0 +1,26 @@
+:root {
+  --gradient-color: linear-gradient(135deg, #203040, #000000);
+  --btn-color-blue: #0064E0; 
+  --input-background-color: #1C2A33;
+  --border-placeholder-color: #455A67;
+  --create-account-color: #3A76A8;
+}
+
+/*Estilização dos inputs*/
+.styled-input {
+  height: 53px;
+  border-radius: 10px;
+  background-color: var(--input-background-color);
+  border: var(--border-placeholder-color) solid 1px;
+  color: white;
+  padding-left: 18px;
+}
+
+.styled-input:focus {
+  outline: none;
+  border: 2px solid var(--border-placeholder-color); /* Substitua #4a90e2 pela cor desejada */
+}
+
+.styled-input::placeholder {
+  color: var(--border-placeholder-color);
+}
