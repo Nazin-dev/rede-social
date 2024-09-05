@@ -1,7 +1,7 @@
 import './CreateAccount.css';
 import melonzone from '../img/melonzone.png';
-import Input from '../components/Input.jsx';
-import CustomFileInput from '../components/CustomFileInput.jsx';
+import Input from '../components/PageAuthComponents/Input.jsx';
+import CustomFileInput from '../components/PageAuthComponents/CustomFileInput.jsx';
 import { useNavigate } from 'react-router-dom';
 
 function CreateAccount() {

@@ -1,0 +1,13 @@
+
+:root {
+  --navbar-background:  #191919;
+}
+
+.bottom-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--navbar-background);
+  height: 64px;
+  margin-top: 10px;
+}

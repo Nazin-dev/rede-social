@@ -1,4 +1,4 @@
-import '../components/Input.css'
+import '../PageAuthComponents/Input.css'
 
 function Input({name, type}) {
   return (

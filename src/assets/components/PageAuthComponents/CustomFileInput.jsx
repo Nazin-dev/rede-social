@@ -1,4 +1,4 @@
-import '../components/CustomFileInput.css';
+import '../PageAuthComponents/CustomFileInput.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 

@@ -1,0 +1,23 @@
+
+:root {
+  --navbar-background:  #191919;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--navbar-background);
+  height: 79px;
+  min-width: 45vh;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  gap: 20px;
+  padding-left: 10px;
+}
+
