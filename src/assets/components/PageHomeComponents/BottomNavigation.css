@@ -17,6 +17,5 @@
   bottom: 0;
   width: 100%; /* Garante que o menu ocupe toda a largura */
   height: 60px;
-  background-color: #000;
   z-index: 1000;
 }

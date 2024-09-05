@@ -50,6 +50,10 @@
   margin-bottom: 10px;
 }
 
+.icons-post .icon {
+  font-size: 14px;
+}
+
 .post-footer {
   font-weight: 500;
 }
