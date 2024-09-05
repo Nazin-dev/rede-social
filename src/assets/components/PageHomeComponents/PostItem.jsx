@@ -1,12 +1,11 @@
 import '../PageHomeComponents/PostItem.css';
-import Profile from '../../img/profile.png'
 
-function PostItem({userName, userLocation, postText, postImage, likes}) {
+function PostItem({userProfile, userName, userLocation, postText, postImage, likes}) {
   return (
     <div className="post">
       <div className="post-header">
         <div className="profile-info">
-          <img src={Profile} alt="" className="profile-pic" />
+          <img src={userProfile} alt="" className="profile-pic" />
           <div className="post-info">
             <span className="username">{userName}</span>
             <span className="location">{userLocation}</span>

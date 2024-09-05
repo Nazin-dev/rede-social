@@ -8,9 +8,15 @@
   justify-content: space-between;
   align-items: center;
   background: var(--navbar-background);
-  height: 79px;
-  min-width: 45vh;
+  height: 64px;
   gap: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .icon {
