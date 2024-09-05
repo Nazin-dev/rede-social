@@ -21,7 +21,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90dvh;
+  width: 45vh;
 }
 
 .login-form {

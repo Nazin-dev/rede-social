@@ -1,8 +1,18 @@
 import './Login.css';
-import melonzone from '../img/melonzone.png'
+import melonzone from '../img/melonzone.png';
 import Input from '../components/Input.jsx';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 function Login() {
+
+  const navigate = useNavigate(); 
+  function handleCreateAccount() {
+    navigate("/create-account"); // Redireciona para a página de criação de conta
+  }
+
   return (
     <div className='login-container'>
       <form className='login-form'>
@@ -13,7 +23,7 @@ function Login() {
         <Input type="password" name="Senha"/>
         <button type='submit' className='login-button'>Entrar</button>
         <a  href='#' className='recover-password'>Esqueceu a senha?</a>
-        <button type='submit' className='creat-account-button'>Criar nova conta</button>
+        <button onClick={handleCreateAccount} type='submit' className='creat-account-button'>Criar nova conta</button>
       </form> 
     </div>
   );
