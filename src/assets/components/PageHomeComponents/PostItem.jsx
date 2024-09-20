@@ -1,6 +1,13 @@
 import '../PageHomeComponents/PostItem.css';
+import React, { useState } from 'react';
 
-function PostItem({userProfile, userName, userLocation, postText, postImage, likes}) {
+function PostItem({userProfile, userName, userLocation, postText, postImage, likes, timeAgo}) {
+  const [isLiked, setIsLiked] = useState(false);
+
+  function LikeClick() {
+    setIsLiked(!isLiked);
+  }
+
   return (
     <div className="post">
       <div className="post-header">
@@ -16,12 +23,15 @@ function PostItem({userProfile, userName, userLocation, postText, postImage, lik
       <p className="post-text">{postText}</p>
       {postImage && <img src={postImage} alt="Post" className="post-image" />}
       <div className="icons-post">
-        <div className="icon like"><i className="bi bi-heart"></i></div>
+        <div className="icon like" onClick={LikeClick}>
+          <i className={`bi ${isLiked ? 'bi-heart-fill liked' : 'bi-heart'}`}></i>
+        </div>
         <div className="icon comments"><i className="bi bi-chat"></i></div>
         <div className="icon send-post"><i className="bi bi-send"></i></div>
       </div>
       <div className="post-footer">
-        <span>{likes} likes</span>
+        <span className='likes'>{likes} likes</span>
+        <span className="time-ago">{timeAgo}</span>
       </div>
     </div>
   );
