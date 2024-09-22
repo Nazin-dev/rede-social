@@ -23,19 +23,22 @@
   padding-top: 20px;
   width: 100vh;
   max-width: 90%;
+  height: 200px;
   position: relative;
 }
 
 .post-textarea {
   background-color: var(--background-color);
   color: #fff;
+  font-family: "Inter", sans-serif;
   border: none;
   outline: none;
   resize: none;
   padding-left: 20px;
   width: 90%;
-  height: 100px;
-  margin-bottom: 20px;
+  height: 100%;
+  margin-bottom: 45px;
+  margin-top: 0px;
 }
 
 .file-input {
@@ -49,12 +52,21 @@
   padding-top: 14px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--background-color);
 }
 
 
 .actions-add {
   display: flex;
+  gap: 5px;
 
 }
 
@@ -63,13 +75,10 @@
   font-size: 18px;
 }
 
-.icon-modal .bi-at {
-  font-size: 30px;
-}
 
 .submit-btn, .cancel-btn {
   height: 38px;
-  border: none;
+  border: none; 
   cursor: pointer;
   border-radius: 5px;
 }

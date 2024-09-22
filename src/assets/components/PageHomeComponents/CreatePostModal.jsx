@@ -60,7 +60,7 @@ function CreatePostModal({ isOpen, closeModal }) {
             <div className="icon-modal add-image"><i className="bi bi-plus-circle"></i></div>
           </label>
           <div className="icon-modal add-map"><i className="bi bi-geo-alt"></i></div>
-          <div className="icon-modal add-at"><i className="bi bi-at"></i></div>
+          <div className="icon-modal person-add"><i class="bi bi-person-add"></i></div>
         </div>
         <div className="actions-post-cancel">
           <button onClick={closeModal} className="cancel-btn">Cancelar</button>

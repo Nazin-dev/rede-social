@@ -1,0 +1,71 @@
+:root {
+  --close-btn: #3E4045;
+  --backgorund-color: #25282D;
+}
+
+
+.modal-content-full {
+  position: fixed; /* Garante que o modal fique fixo e ocupe a tela inteira */
+  width: 100%;
+  height: 100%;
+  background-color: var(--backgorund-color); /* Cor de fundo do modal */
+  z-index: 9999; /* Garante que o modal fique acima de outros elementos */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-overlay-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Cor do overlay com transparência */
+  z-index: 9998; /* Um pouco abaixo do conteúdo do modal */
+}
+
+.comment-modal-header {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-feed {
+  flex-grow: 1;
+  overflow-y: auto; /* Faz a área de comentários rolável */
+  padding-bottom: 72px; /* Adiciona um espaço extra para evitar que o conteúdo cubra a barra de comentários */
+}
+
+
+
+
+.title-comments {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 60%;
+}
+
+.title-comments h2 {
+  font-size: 12px;
+  color: white;
+}
+
+.btn-close-content {
+  display: flex;
+  justify-content: end;
+  width: 40%;
+}
+
+
+.close-modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background: none;
+  border: none;
+  color: var(--close-btn);
+  width: 100%;
+  font-size: 24px;
+  cursor: pointer;
+}

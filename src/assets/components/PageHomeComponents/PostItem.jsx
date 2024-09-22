@@ -1,11 +1,21 @@
 import '../PageHomeComponents/PostItem.css';
 import React, { useState } from 'react';
+import CommentModal from '../PageCommentComponents/CommentModal.jsx'; // Importa o CommentModal
 
-function PostItem({userProfile, userName, userLocation, postText, postImage, likes, timeAgo}) {
+function PostItem({ userProfile, userName, userLocation, postText, postImage, likes, timeAgo, initialComments }) {
   const [isLiked, setIsLiked] = useState(false);
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false); // Gerencia o estado do modal de comentários
 
   function LikeClick() {
     setIsLiked(!isLiked);
+  }
+
+  function openCommentModal() {
+    setIsCommentModalOpen(true);
+  }
+
+  function closeCommentModal() {
+    setIsCommentModalOpen(false);
   }
 
   return (
@@ -26,13 +36,23 @@ function PostItem({userProfile, userName, userLocation, postText, postImage, lik
         <div className="icon like" onClick={LikeClick}>
           <i className={`bi ${isLiked ? 'bi-heart-fill liked' : 'bi-heart'}`}></i>
         </div>
-        <div className="icon comments"><i className="bi bi-chat"></i></div>
+        <div className="icon comments" onClick={openCommentModal}>
+          <i className="bi bi-chat"></i>
+        </div>
         <div className="icon send-post"><i className="bi bi-send"></i></div>
       </div>
       <div className="post-footer">
         <span className='likes'>{likes} likes</span>
         <span className="time-ago">{timeAgo}</span>
       </div>
+
+      {/* Renderiza o CommentModal quando o ícone de comentários é clicado */}
+      <CommentModal
+      isOpen={isCommentModalOpen}
+      closeModal={closeCommentModal}
+      initialComments={Array.isArray(initialComments) ? initialComments : []} // Garante que seja sempre um array
+/>
+
     </div>
   );
 };

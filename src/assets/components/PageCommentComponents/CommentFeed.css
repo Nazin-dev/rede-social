@@ -1,0 +1,9 @@
+.no-comment {
+  display: flex;
+  justify-content: center;
+}
+
+.no-comment p {
+  color: white;
+  font-weight: 500;
+}
