@@ -17,9 +17,9 @@ api.interceptors.response.use(
   }
 );
 
-export const getPosts = async () => {
+async function getPosts() {
   try {
-    const response = await api.get('/posts');
+    const response = await api.get('/post/all');
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar posts', error);
@@ -36,6 +36,5 @@ export const createPost = async (postData) => {
     throw error;
   }
 };
-
 
 export default getPosts;

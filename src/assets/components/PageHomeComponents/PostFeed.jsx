@@ -1,9 +1,10 @@
 import '../PageHomeComponents/PostFeed.css';
+import React, { useState, useEffect } from 'react';
 import PostItem from '../PageHomeComponents/PostItem.jsx'
 import getPosts from '../../../services/apiServices.js';
 
 
-function PostFeed() {
+const PostFeed = () => {
   const [posts, setPost] = useState(null); // Estado para armazenar o usuário
   const [error, setError] = useState(null); // Estado para armazenar o erro
 
@@ -35,11 +36,11 @@ function PostFeed() {
       {posts.map(post => (
         <PostItem
           key={post.id}
-          userProfile={`http://192.168.1.4:8080${post.user.img}`}
+          userProfile={`http://localhost:8080${post.user.img}`}
           userName={post.user.name}
           userLocation="Paraguai"
           postText={post.text}
-          postImage={`http://192.168.1.4:8080${post.user.img}`}
+          postImage={`http://localhost:8080${post.img}`}
           likes="567"
         />
       ))}
