@@ -17,9 +17,9 @@ api.interceptors.response.use(
   }
 );
 
-async function getPosts() {
+export async function getPosts() {
   try {
-    const response = await api.get('/post/all');
+    const response = await api.get('/post/posts');
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar posts', error);
@@ -29,7 +29,7 @@ async function getPosts() {
 
 export const createPost = async (postData) => {
   try {
-    const response = await api.post('/posts', postData);
+    const response = await api.post('/post/create', postData);
     return response.data;
   } catch (error) {
     console.error('Erro ao criar post', error);
@@ -37,4 +37,30 @@ export const createPost = async (postData) => {
   }
 };
 
-export default getPosts;
+export async function createUser(userData) {
+  try {
+    const response = await api.post('/user/create', userData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+    });
+
+    return response.data;
+
+  } catch (error) {
+    console.error('Erro ao criar usuário:', error.response ? error.response.data : error.message);
+    throw error; // Rejeita o erro para ser tratado pelo chamador
+  }
+}
+
+export async function loginUser(userData) {
+  try {
+    const response = await api.post('/user/login', userData); // Use await para esperar pela resposta da API
+    return response.data; // Retorne a resposta da API
+  } catch (error) {
+    console.error('Erro ao logar usuário:', error.response ? error.response.data : error.message);
+    throw error; // Lança o erro para ser tratado no front-end
+  }
+}
+
+export default { getPosts, createPost, createUser, loginUser }; 

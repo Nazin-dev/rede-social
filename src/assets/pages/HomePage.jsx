@@ -8,7 +8,7 @@ function HomePage() {
   return (
     <div className='body-home'>
     <Navbar />
-    <PostFeed />
+    <PostFeed/>
     <BottomNavigation />
     </div>
   );

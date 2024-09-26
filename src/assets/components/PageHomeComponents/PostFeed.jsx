@@ -1,7 +1,7 @@
 import '../PageHomeComponents/PostFeed.css';
 import React, { useState, useEffect } from 'react';
 import PostItem from '../PageHomeComponents/PostItem.jsx'
-import getPosts from '../../../services/apiServices.js';
+import { getPosts } from '../../../services/apiServices.js';
 
 
 const PostFeed = () => {
@@ -19,6 +19,7 @@ const PostFeed = () => {
     };
 
     fetchPosts(); // Chama a função quando o componente é montado
+    console.log(posts);
   }, []);
 
   // Verifica se houve erro ao buscar o usuário

@@ -2,14 +2,14 @@ import '../PageAuthComponents/CustomFileInput.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-function CustomFileInput() {
+function CustomFileInput({onChange}) {
   return (
     <div className='input-container'>
-      <label htmlFor="file-upload" className="custom-file-upload">
+      <label htmlFor="file" className="custom-file-upload">
         <p>Foto de perfil</p>
         <i className="bi bi-arrow-right-circle"></i>
       </label>
-      <input className="input-upload" id="file-upload" type="file" />
+      <input className="input-upload" id="file" type="file" onChange={onChange}/>
     </div>
   )
 }
