@@ -1,0 +1,33 @@
+:root {
+  --color-text-btn: #E3E3E3;
+  --background-colo-btn: #3E4045;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.edit-btn, .share-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-colo-btn);
+  height: 34px;
+  width: 100%;
+  border-radius: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.edit-btn, .share-btn {
+  border: none;
+  color: var(--color-text-btn);
+  font-weight: 600;
+  font-size: 12px;
+  box-sizing: border-box; /* Garante que o box-model seja o esperado */
+  display: inline-block; /* Ajusta o comportamento do botão */
+  cursor: pointer; /* Garante que o cursor de 'mãozinha' seja mantido */
+}

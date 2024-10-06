@@ -42,7 +42,7 @@ function PostItem({ userProfile, userName, userLocation, postText, postImage, li
         <div className="icon send-post"><i className="bi bi-send"></i></div>
       </div>
       <div className="post-footer">
-        <span className='likes'>{likes} likes</span>
+        <span className="likes">{likes} likes</span>
         <span className="time-ago">{timeAgo}</span>
       </div>
 

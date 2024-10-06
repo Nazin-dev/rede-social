@@ -1,0 +1,53 @@
+:root {
+  --color-text: #E3E3E3;
+}
+
+.content-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.profile-pic-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.profile-pic-user {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+}
+
+.name-user {
+  font-weight: 600;
+}
+
+.numbers-posts, .numbers-followers, .numbers-following {
+  font-weight: 900;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-bio {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  font-size: 10px;
+  color: var(--color-text);
+  margin-left: 20px;
+  font-weight: 500;
+}

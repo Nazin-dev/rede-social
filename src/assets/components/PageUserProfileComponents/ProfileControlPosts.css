@@ -1,0 +1,33 @@
+:root {
+  --color-text-btn: #E3E3E3;
+  --background-colo-btn: #3E4045;
+}
+
+.control-posts {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #3E4045;
+  margin-top: 20px;
+}
+
+.my-posts {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-btn);
+  text-align: center;
+}
+
+.control-posts {
+  flex-grow: 1;
+  margin-top: 20px; /* Compensa a altura do navbar */
+  margin-bottom: 40px;
+  overflow-y: auto;
+  padding: 0; /* Remove padding extra */
+  width: 100vw; /* Garante que ocupe 100% da largura da tela */ 
+}
+
+.control-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
