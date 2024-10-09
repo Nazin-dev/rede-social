@@ -10,7 +10,7 @@
   margin-top: 20px;
 }
 
-.edit-btn, .share-btn {
+.primary-btn, .secondary-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
   margin-right: 10px;
 }
 
-.edit-btn, .share-btn {
+.primary-btn, .secondary-btn {
   border: none;
   color: var(--color-text-btn);
   font-weight: 600;

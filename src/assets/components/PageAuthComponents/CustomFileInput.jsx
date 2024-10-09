@@ -7,7 +7,7 @@ function CustomFileInput() {
     <div className='input-container'>
       <label htmlFor="file-upload" className="custom-file-upload">
         <p>Foto de perfil</p>
-        <i className="bi bi-arrow-right-circle"></i>
+        <i className="bi bi-arrow-right-circle bi-upload-pic"></i>
       </label>
       <input className="input-upload" id="file-upload" type="file" />
     </div>

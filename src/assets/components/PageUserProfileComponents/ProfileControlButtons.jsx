@@ -1,13 +1,13 @@
 import './ProfileControlButtons.css';
 
-function ControlButtons() {
+function ControlButtons({onPrimaryFunction, primaryText, onSecondaryFunction, secondaryText}) {
   return (
-    <div className="control-buttons">
-      <button className="edit-btn">
-        Editar Perfil
+    <div className="control-buttons" onClick={onPrimaryFunction}>
+      <button className="primary-btn">
+        {primaryText}
       </button>
-      <button className="share-btn">
-        Compartilhar Perfil
+      <button className="secondary-btn" onClick={onSecondaryFunction}>
+        {secondaryText}
       </button>
     </div>
   );

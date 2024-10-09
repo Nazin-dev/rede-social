@@ -1,0 +1,23 @@
+
+:root {
+  --background-page: #25282D;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Evita qualquer scroll horizontal */
+}
+
+.body-other-user {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: var(--background-page);
+  overflow: hidden;
+}
+

@@ -1,10 +1,17 @@
 import '../PageHomeComponents/PostItem.css';
 import React, { useState } from 'react';
-import CommentModal from '../PageCommentComponents/CommentModal.jsx'; // Importa o CommentModal
+import CommentModal from '../PageCommentComponents/CommentModal.jsx'; 
+import { useNavigate } from "react-router-dom";
+
 
 function PostItem({ userProfile, userName, userLocation, postText, postImage, likes, timeAgo, initialComments }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false); // Gerencia o estado do modal de comentários
+  const navigate = useNavigate();
+
+  function navigateUserOther() {
+    navigate("/user-other")
+  }
 
   function LikeClick() {
     setIsLiked(!isLiked);
@@ -21,7 +28,7 @@ function PostItem({ userProfile, userName, userLocation, postText, postImage, li
   return (
     <div className="post">
       <div className="post-header">
-        <div className="profile-info">
+        <div className="profile-info" onClick={navigateUserOther}>
           <img src={userProfile} alt="" className="profile-pic" />
           <div className="post-info">
             <span className="username">{userName}</span>

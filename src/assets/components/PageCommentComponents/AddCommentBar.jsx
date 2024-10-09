@@ -26,7 +26,7 @@ function AddCommentBar({ onAddComment }) {
         className="input-add-comment"
       />
       <button onClick={handleSendComment} className="send-comment-btn">
-        <i class="bi bi-arrow-right-circle"></i>
+        <i class="bi bi-arrow-right-circle bi-send-comment"></i>
       </button>
     </div>
   );

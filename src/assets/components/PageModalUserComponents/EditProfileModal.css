@@ -1,0 +1,84 @@
+:root {
+  --color-text-default: #E3E3E3;
+  --color-background-default: #25282D;
+  --color-border-default: #3E4045;
+  --color-laber-default: #979595;
+  --color-highlighted: #8497B0;
+}
+
+.modal-edit-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro para o overlay */
+}
+
+.modal-container {
+  background-color: #25282D;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: var(--color-text-default);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+}
+
+.title-header {
+  font-weight: 600;
+}
+
+.modal-profile-pic {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.edit-pic {
+  color: var(--color-highlighted);
+  font-weight: 600;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.input-group label {
+  font-size: 10px;
+  color: var(--color-laber-default);
+}
+
+.input-group input, .input-group textarea, .input-group select {
+  width: 100%;
+  padding: 0px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--color-background-default);
+  color: var(--color-text-default);
+  font-size: 12px;
+}

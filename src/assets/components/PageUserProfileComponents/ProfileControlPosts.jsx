@@ -1,11 +1,11 @@
 import '../PageUserProfileComponents/ProfileControlPosts.css';
 import MyPosts from './MyPosts';
 
-function ControlPosts() {
+function ControlPosts({namePostsHeader}) {
   return (
     <>
       <div className="control-posts">
-        <p className="my-posts">Minhas Postagens</p>
+        <p className="my-posts">{namePostsHeader}</p>
         <MyPosts />
       </div>
       
