@@ -23,6 +23,7 @@ function CustomFileInput() {
         className="input-upload" 
         id="file-upload" 
         type="file" 
+        accept="image/*"
         onChange={handleFileChange} // Chamando a função quando o arquivo é alterado
       />
     </div>

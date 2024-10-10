@@ -11,8 +11,7 @@
   background: var(--background);
   height: 62px;
   border-top: 1px solid var(--background-input);
-  
-  z-index: 999990999;
+  z-index: 1000;
 }
 
 .input-add-comment {

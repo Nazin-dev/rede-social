@@ -62,7 +62,7 @@ function CreateAccount() {
           </label>
         </div>
 
-        <button type='submit' className='button' onClick={createAccountToHomePage}>Cadastrar-se</button>
+        <button type='submit' className='button-create' onClick={createAccountToHomePage}>Cadastrar-se</button>
         <p className='access-account'>
           Já tem uma conta?
           <a href='#' onClick={goToLogin}>Conecte-se</a>

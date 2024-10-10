@@ -18,5 +18,5 @@
   bottom: 0;
   width: 100%; /* Garante que o menu ocupe toda a largura */
   height: 60px;
-  z-index: 10000;
+  z-index: 1000;
 }
