@@ -21,10 +21,15 @@
   border-radius: 20px;
   padding-bottom: 20px;
   padding-top: 20px;
-  width: 100vh;
-  max-width: 90%;
-  height: 200px;
+  width: 90vw; /* Ajustado para 90% da largura da tela */
+  max-width: 500px; /* Definir um limite máximo de largura */
+  height: auto; /* Ajuste para altura automática */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto; /* Centraliza o modal */
+  overflow: hidden; /* Previne qualquer overflow */
 }
 
 .post-textarea {
@@ -34,17 +39,23 @@
   border: none;
   outline: none;
   resize: none;
-  padding-left: 20px;
-  width: 90%;
-  height: 100%;
-  margin-bottom: 45px;
-  margin-top: 0px;
+  padding: 10px; /* Ajuste no padding */
+  width: 100%; /* Largura total */
+  height: 150px; /* Altura ajustada */
+  margin-bottom: 10px;
+  overflow-y: auto; /* Adiciona scroll vertical */
 }
 
 .file-input {
   display: none;
 }
 
+.image-name {
+  color: white;
+  font-size: 12px;
+  outline: none;
+  margin-bottom: 10px; /* Espaço entre o nome da imagem e os ícones */
+}
 
 .modal-actions {
   display: flex;
@@ -53,28 +64,19 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 15px;
-  margin-top: 15px;
   justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
   background: var(--background-color);
 }
-
 
 .actions-add {
   display: flex;
   gap: 5px;
-
 }
 
-.icon-modal{
+.icon-modal {
   color: #fff;
   font-size: 18px;
 }
-
 
 .submit-btn, .cancel-btn {
   height: 38px;
@@ -102,4 +104,9 @@
   border-radius: 20px;
   width: 70px;
   color: #fff;
+}
+
+.image-name {
+  margin-left: 10px;
+  margin-right: 10px;
 }

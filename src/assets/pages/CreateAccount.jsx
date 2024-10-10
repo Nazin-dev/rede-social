@@ -14,6 +14,16 @@ function CreateAccount() {
     navigate("/");
   }
 
+  function createAccountToHomePage(e) {
+    e.preventDefault();
+    if (isChecked) {
+      navigate("/home");
+    }
+    else {
+      alert("Você deve concordar com os Termos de Uso e a Política de Privacidade");
+    }
+  };
+
   function handleCheckboxChange(event) {
     setIsChecked(event.target.checked);
   }
@@ -52,7 +62,7 @@ function CreateAccount() {
           </label>
         </div>
 
-        <button type='submit' className='button'>Cadastrar-se</button>
+        <button type='submit' className='button' onClick={createAccountToHomePage}>Cadastrar-se</button>
         <p className='access-account'>
           Já tem uma conta?
           <a href='#' onClick={goToLogin}>Conecte-se</a>
