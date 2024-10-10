@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --color-name-user: #979595;
+  --color-text-notification: #E3E3E3;
+  --color-follower-back: #737FE7;
+}
+
+.notification-profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-profile-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-space {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pic-user-notification {
+  width: 37px;
+  height: 37px;
+  border-radius: 100%;
+}
+
+.notification-user-content  {
+  font-size: 12px;
+  color: var(--color-name-user);
+  font-weight: 500;
+}
+
+.notification-name-user-content {
+  display: flex;
+  gap: 10px;
+}
+
+.notification-name-user {
+  color: var(--color-text-notification);
+  font-weight: 700;
+}
+
+.notification-text {
+  color: var(--color-text-notification);
+  font-weight: 400;
+}
+
+.follower-back {
+  background: var(--color-follower-back);
+  height: 33px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
+.follower-back:hover {
+  background: white;
+  color: #737FE7;
+}

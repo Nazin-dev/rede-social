@@ -1,0 +1,91 @@
+:root {
+  --background-modal-search: #25282D;
+  --color-btn-exit: #E3E3E3;
+  --color-btn-search: #979595;
+  --color-border-search: #3E4045;
+}
+
+/* Estilo para o overlay do modal */
+.modal-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-search-content {
+  background-color: var(--background-modal-search);
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+/* Estilo para o botão de fechar (voltar) */
+.close-btn-search {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: var(--color-btn-exit);
+  cursor: pointer;
+}
+
+/* Estilo da barra de pesquisa */
+.field-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.form-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-search input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: var(--background-modal-search);
+  border: 1px solid var(--color-border-search);
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-search input::placeholder {
+  color: var(--color-btn-search);
+}
+
+/* Estilo do botão de ícone de pesquisa */
+.search-icon {
+  background: none;
+  border: none;
+  color: var(--color-btn-search);
+  font-size: 15px;
+  margin-left: -50px;
+  cursor: pointer;
+}
+
+/* Estilo para o histórico de pesquisa */
+.search-history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}

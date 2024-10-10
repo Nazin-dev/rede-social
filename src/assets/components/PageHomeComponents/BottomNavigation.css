@@ -1,6 +1,7 @@
 
 :root {
   --navbar-background:  #191919;
+  --color-line: #3E4045;
 }
 
 .bottom-navigation {
@@ -17,5 +18,5 @@
   bottom: 0;
   width: 100%; /* Garante que o menu ocupe toda a largura */
   height: 60px;
-  z-index: 1000;
+  z-index: 10000;
 }

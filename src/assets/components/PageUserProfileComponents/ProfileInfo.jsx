@@ -38,7 +38,6 @@ function ProfileInfo() {
       <ControlButtons 
       onPrimaryFunction={handleEditProfile}
       primaryText="Editar Perfil"
-      onSecondaryFunction={handleShareProfile}
       secondaryText="Compartilhar Perfil"
       />
       <ControlPosts 

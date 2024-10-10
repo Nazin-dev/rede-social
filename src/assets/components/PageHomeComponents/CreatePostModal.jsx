@@ -32,6 +32,7 @@ function CreatePostModal({ isOpen, closeModal }) {
   }
 
   return (
+
     <Modal
       isOpen={isOpen}
       onRequestClose={closeModal}

@@ -1,0 +1,63 @@
+:root {
+  --background-modal-search: #25282D;
+  --color-btn-exit: #E3E3E3;
+  --color-btn-search: #979595;
+  --color-border-search: #3E4045;
+}
+
+/* Estilo para o overlay do modal */
+.modal-notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.notification-modal {
+  margin-top: 10px;
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-notification-content {
+  background-color: var(--background-modal-search);
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exit-not, .title-not, .recent, .old {
+  color: var(--color-btn-exit);
+}
+
+.title-not {
+  font-weight: 600;
+}
+
+.notification-recent {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.notification-old {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.recent, .old {
+  font-size: 12px;
+  font-weight: 600;
+}
