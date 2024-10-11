@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.API_URL || 'http://localhost:8080/api/v1';
+
+
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api/v1', // URL base do seu back-end
+  baseURL: API_URL, // URL base do seu back-end
   headers: {
     'Content-Type': 'application/json', // Tipo de conteúdo padrão
   },
