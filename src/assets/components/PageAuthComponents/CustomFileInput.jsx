@@ -2,16 +2,7 @@ import React, { useState } from 'react';
 import '../PageAuthComponents/CustomFileInput.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-function CustomFileInput() {
-  const [fileName, setFileName] = useState(""); // Estado para armazenar o nome do arquivo
-
-  // Função para lidar com o upload do arquivo
-  function handleFileChange(event) {
-    const file = event.target.files[0]; // Pegando o primeiro arquivo
-    if (file) {
-      setFileName(file.name); // Armazenando o nome do arquivo no estado
-    }
-  }
+function CustomFileInput({fileName, onChange}) {
 
   return (
     <div className='input-container'>
@@ -24,7 +15,7 @@ function CustomFileInput() {
         id="file-upload" 
         type="file" 
         accept="image/*"
-        onChange={handleFileChange} // Chamando a função quando o arquivo é alterado
+        onChange={onChange} // Chamando a função quando o arquivo é alterado
       />
     </div>
   );

@@ -1,8 +1,8 @@
-import '../PageAuthComponents/Input.css'
+import './Input.css'
 
-function Input({name, type}) {
+function Input({placeholder, name, type, onChange}) {
   return (
-  <input type={type} className="styled-input " placeholder={name} />
+  <input type={type} className="styled-input " name={name} placeholder={placeholder} onChange={onChange} />
   )
 };
 
