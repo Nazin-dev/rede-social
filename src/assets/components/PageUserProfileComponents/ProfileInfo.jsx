@@ -6,6 +6,7 @@ import Profile from '../../img/profile/profile4.png';
 import ImagePost from '../../img/posts/post7.png'
 import EditProfileModal from '../PageModalUserComponents/EditProfileModal.jsx';
 import React, { useState } from 'react';
+import { getUserById } from '../../../services/apiServices.js';
 
 function ProfileInfo() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +22,23 @@ function ProfileInfo() {
   const handleShareProfile = () => {
     console.log("Compartilhar perfil");
   };
+
+
+  async function getUserData() {
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('ID do usuário:', user);
+
+    try {
+      const response = await getUserById(user.id);
+      console.log('Usuário:', response);
+    } catch (error) {
+      console.error('Erro ao buscar usuário:', error);
+    }
+
+  }
+  
+  getUserData();
 
   return(
     <>
