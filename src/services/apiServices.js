@@ -16,6 +16,7 @@ const api = axios.create({
 const NO_AUTH_ROUTES = [
   '/user/login',
   '/user/create',
+  '/user/refresh-token',
 ];
 
 // Definindo uma função para obter os tokens

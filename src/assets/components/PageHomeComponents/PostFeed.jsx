@@ -5,6 +5,13 @@ import Profile from '../../img/profile/profile.png'
 import { getPosts } from '../../../services/apiServices.js';
 
 function PostFeed() {
+
+  getPosts().then((posts) => {
+    console.log(posts);
+  }).catch((error) => {
+    console.error('Erro ao buscar posts:', error);
+  });
+
   return (
     <div className="post-feed">
       <PostItem 
