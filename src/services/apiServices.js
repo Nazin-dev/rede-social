@@ -1,47 +1,74 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+axios.defaults.withCredentials = true;
 
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
   baseURL: 'http://localhost:8080/api/v1', // URL base do seu back-end
   headers: {
     'Content-Type': 'application/json', // Tipo de conteúdo padrão
-  },
+  }
 });
 
-// Definindo rotas que não requerem autenticação
+// Lista de URLs que não necessitam de autenticação
 const NO_AUTH_ROUTES = [
   '/user/login',
   '/user/create',
 ];
 
-// Interceptor para adicionar token a todas as requisições que precisam de autenticação
+// Definindo uma função para obter os tokens
+function getTokens() {
+  return {
+    token: sessionStorage.getItem('token'),
+    refreshToken: sessionStorage.getItem('refreshToken'),
+  };
+}
+
+// Definindo uma função para salvar tokens
+function saveTokens(token, refreshToken) {
+  console.log('token: ', token);
+  console.log('Refreshtoken: ', refreshToken);
+  sessionStorage.setItem('token', token);
+  sessionStorage.setItem('refreshToken', refreshToken);
+  localStorage.setItem('token', token);
+  localStorage.setItem('refreshToken', refreshToken);
+}
+
+// Interceptor para adicionar o token a todas as requisições que precisam de autenticação
+api.interceptors.request.use(
+  (config) => {
+    const { token } = getTokens();
+    // Verifica se a URL atual não está na lista de URLs que não precisam de autenticação
+    if (token && !NO_AUTH_ROUTES.includes(config.url)) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor para lidar com erros globais, como expiração de token
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
-    // Caso o token esteja expirado (erro 401)
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true; // Evitar loop infinito de retries
+      originalRequest._retry = true;
       try {
-        const refreshToken = sessionStorage.getItem('refreshToken');
-        const response = await api.post('/user/refresh-token', { refreshToken });
-        const newToken = response.data.token;
+        const { refreshToken } = getTokens();
+        if (refreshToken) {
+          const response = await api.post('/user/refresh-token', { refreshToken });
+          const newToken = response.data.token;
 
-        // Atualiza o token no sessionStorage e localStorage
-        sessionStorage.setItem('token', newToken);
-        localStorage.setItem('token', newToken);
+          // Atualiza os tokens no armazenamento
+          saveTokens(newToken, response.data.refreshToken || refreshToken);
 
-        // Se a API retornar um novo refresh token, atualize também
-        if (response.data.refreshToken) {
-          sessionStorage.setItem('refreshToken', response.data.refreshToken);
-          localStorage.setItem('refreshToken', response.data.refreshToken);
+          // Atualiza o cabeçalho Authorization e refaz a requisição original
+          originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
+          return api(originalRequest);
         }
-
-        // Atualiza o cabeçalho Authorization e refaz a requisição original
-        originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
-        return api(originalRequest);
       } catch (refreshError) {
         console.error('Erro ao atualizar o token:', refreshError);
         // Redirecionar para a tela de login caso o refresh falhe
@@ -50,16 +77,10 @@ api.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
-
     return Promise.reject(error);
   }
 );
 
-function getTokens() {
-  const token = sessionStorage.getItem('token');
-  const refreshToken = sessionStorage.getItem('refreshToken');
-  return [token, refreshToken ];
-}
 
 // Função para buscar posts (precisa de autenticação)
 export async function getPosts() {
@@ -67,7 +88,7 @@ export async function getPosts() {
     const response = await api.get('/post/posts');
     return response.data;
   } catch (error) {
-    console.error('Erro ao buscar posts', error);
+    console.error('Erro ao buscar posts:', error);
     throw error;
   }
 }
@@ -78,7 +99,7 @@ export const createPost = async (postData) => {
     const response = await api.post('/post/create', postData);
     return response.data;
   } catch (error) {
-    console.error('Erro ao criar post', error);
+    console.error('Erro ao criar post:', error);
     throw error;
   }
 };
@@ -102,31 +123,23 @@ export async function createUser(userData) {
 export async function loginUser(userData) {
   try {
     const response = await api.post('/user/login', userData);
+    const { token, refreshToken, user } = response.data;
 
-    // Armazena o token e o refresh token no sessionStorage e localStorage
-    sessionStorage.setItem('token', response.data.token);
-    sessionStorage.setItem('refreshToken', response.data.refreshToken);
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('refreshToken', response.data.refreshToken);
-    localStorage.setItem('user', JSON.stringify(response.data.user));
+    // Armazena o token e o refresh token
+    saveTokens(token, refreshToken);
+    localStorage.setItem('user', JSON.stringify(user));
 
-    return response.status; // Retorne a resposta da API
+    return response.status;
   } catch (error) {
     console.error('Erro ao logar usuário:', error.response ? error.response.data : error.message);
     throw error;
   }
-};
+}
 
+// Função para buscar usuário por ID (precisa de autenticação)
 export async function getUserById(id) {
-
-  const [token, refreshToken] = getTokens();
-
   try {
-    const response = await api.get(`/user/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await api.get(`/user/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar usuário:', error.response ? error.response.data : error.message);
@@ -134,4 +147,14 @@ export async function getUserById(id) {
   }
 }
 
-export default { getPosts, createPost, createUser, loginUser };
+export async function helloworld(){
+  try {
+    const response = await api.get(`/helloworld`);
+    return response.data;
+  } catch (error) {
+    console.error('erro', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld };
