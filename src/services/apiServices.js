@@ -2,9 +2,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 axios.defaults.withCredentials = true;
 
+const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1'
+
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api/v1', // URL base do seu back-end
+  baseURL: 'https://api.melonzone.com.br/api/v1', // URL base do seu back-end
   headers: {
     'Content-Type': 'application/json', // Tipo de conteúdo padrão
   }
