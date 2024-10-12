@@ -25,9 +25,8 @@ function CreateAccount() {
     setIsChecked(event.target.checked);
   }
 
-  const validatePassword = (password) => {
-
-    if (password.length >= 7) {
+  const validatePassword = (e) => {
+    if (e.length >= 8) {
       setIsPasswordValid(true);
     } else {
       setIsPasswordValid(false);
@@ -40,8 +39,6 @@ function CreateAccount() {
       alert("Você deve concordar com os Termos de Uso e a Política de Privacidade");
       return;
     }
-
-    validatePassword(password);
 
     if (!isPasswordValid) {
       alert("A senha deve ter pelo menos 8 caracteres");
@@ -74,6 +71,7 @@ function CreateAccount() {
       setEmail(value);
     } else if (name === 'password') {
       setPassword(value);
+      validatePassword(event.target.value);
     }
   };
 

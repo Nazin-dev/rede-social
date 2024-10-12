@@ -2,13 +2,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 axios.defaults.withCredentials = true;
 
-const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1'
+const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1';
 
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
-  baseURL: 'https://api.melonzone.com.br/api/v1', // URL base do seu back-end
+  baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json', // Tipo de conteúdo padrão
+    'Content-Type': 'application/json',
   }
 });
 
@@ -29,8 +29,6 @@ function getTokens() {
 
 // Definindo uma função para salvar tokens
 function saveTokens(token, refreshToken) {
-  console.log('token: ', token);
-  console.log('Refreshtoken: ', refreshToken);
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('refreshToken', refreshToken);
   localStorage.setItem('token', token);
@@ -57,11 +55,19 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && error.response.status === 401 && !originalRequest._retry) {
+
+    // Verifica se houve erro de autenticação e que a requisição não foi para o refresh token
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      !originalRequest._retry &&
+      !NO_AUTH_ROUTES.includes(originalRequest.url)
+    ) {
       originalRequest._retry = true;
       try {
         const { refreshToken } = getTokens();
         if (refreshToken) {
+          // Faz a solicitação para obter um novo token usando o refresh token
           const response = await api.post('/user/refresh-token', { refreshToken });
           const newToken = response.data.token;
 
@@ -80,6 +86,7 @@ api.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
+
     return Promise.reject(error);
   }
 );
@@ -99,7 +106,11 @@ export async function getPosts() {
 // Função para criar post (precisa de autenticação)
 export const createPost = async (postData) => {
   try {
-    const response = await api.post('/post/create', postData);
+    const response = await api.post('/post/create', postData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   } catch (error) {
     console.error('Erro ao criar post:', error);

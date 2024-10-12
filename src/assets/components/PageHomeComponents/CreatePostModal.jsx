@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../PageHomeComponents/CreatePostModal.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Modal from 'react-modal';
+import { createPost } from '../../../services/apiServices';
 
 Modal.setAppElement('#root'); // Necessário para acessibilidade
 
@@ -19,22 +20,31 @@ function CreatePostModal({ isOpen, closeModal }) {
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file) {
-      setPostImage(URL.createObjectURL(file)); // Exibe a imagem
+      setPostImage(file); // Armazena o arquivo da imagem
       setImageName(file.name); // Armazena o nome da imagem
     }
   }
 
   // Função de envio do post
-  function handleSubmit() {
-    // Aqui você pode enviar os dados para o servidor ou salvar em algum estado
-    console.log('Texto do post:', postText);
-    console.log('Imagem do post:', postImage);
+  async function handleSubmit(event) {
+    event.preventDefault();
+   
+    // Cria um objeto FormData para enviar os dados do formulário
+    const formData = new FormData();
+    formData.append('text', postText);
+    formData.append('file', postImage);
 
-    // Resetar os campos
-    setPostText('');
-    setPostImage(null);
-    setImageName(''); // Reseta o nome da imagem
-    closeModal();
+    try {
+      const response = await createPost(formData);
+      console.log('Post criado:', response);
+      // Resetar os campos após a criação do post
+      setPostText('');
+      setPostImage(null);
+      setImageName('');
+      closeModal();
+    } catch (error) {
+      console.error('Erro ao criar post:', error);
+    }
   }
 
   return (
@@ -46,6 +56,7 @@ function CreatePostModal({ isOpen, closeModal }) {
       contentLabel="Criar Post"
     >
       {/* Área de texto com scroll quando necessário */}
+      <form onSubmit={handleSubmit}>
       <textarea
         placeholder="Digite algo aqui..."
         value={postText}
@@ -77,9 +88,10 @@ function CreatePostModal({ isOpen, closeModal }) {
         </div>
         <div className="actions-post-cancel">
           <button onClick={closeModal} className="cancel-btn">Cancelar</button>
-          <button onClick={handleSubmit} className="submit-btn">Enviar</button>
+          <button type='submit' className="submit-btn">Enviar</button>
         </div>
       </div>
+      </form>
     </Modal>
   );
 }
