@@ -37,7 +37,7 @@ function App() {
           }
         />
         <Route
-          path="/user-other"
+          path="/user-other/:id"
           element={
             <ProtectedRoute>
               <PageUserOther />

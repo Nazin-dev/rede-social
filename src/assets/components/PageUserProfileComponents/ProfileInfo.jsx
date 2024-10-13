@@ -17,8 +17,6 @@ function ProfileInfo() {
     posts: [],
   });
 
-  const urlimagem = "http://localhost:8080";
-
   const handleEditProfile = () => {
     setIsModalOpen(true); // Abrir modal
   };
@@ -52,7 +50,7 @@ function ProfileInfo() {
       {Profile.userDTO && Profile.posts && (
         <>
           <UserStats
-            userProfile={urlimagem + Profile.userDTO.img}
+            userProfile={Profile.userDTO.img}
             userName={Profile.userDTO.name}
             numbersPosts={Profile.totalPosts}
             followers={Profile.totalFollowers}
@@ -68,6 +66,7 @@ function ProfileInfo() {
             <p className="my-posts">Meus Posts</p>
             {Profile.posts.map((post) => (
               <PostItem
+                userid={Profile.userDTO.id}
                 key={post.id}
                 userProfile={Profile.userDTO.img}
                 userName={Profile.userDTO.name}

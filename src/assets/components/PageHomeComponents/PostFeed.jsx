@@ -6,12 +6,15 @@ import Profile from '../../img/profile/profile.png'
 
 function PostFeed({ posts }) {
 
+
   return (
     <div className="post-feed">
       {posts.map((post) => (
         <PostItem
           key={post.id}
+          id={post.id}
           userProfile={post.user.img || Profile}
+          userid={post.user.id}
           userName={post.user.name}
           userLocation={"No mundo da Lua"}
           postText={post.text}

@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import { pt } from 'date-fns/locale';
 axios.defaults.withCredentials = true;
 
 const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1';
+export const API_URL_IMAGE = import.meta.env.API_URL_IMAGE || 'http://localhost:8080';
 
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
@@ -18,15 +21,15 @@ const NO_AUTH_ROUTES = [
   '/user/refresh-token',
 ];
 
-// Definindo uma função para obter os tokens
+// Função para obter os tokens
 function getTokens() {
   return {
-    token: sessionStorage.getItem('token'),
-    refreshToken: sessionStorage.getItem('refreshToken'),
+    token: localStorage.getItem('token'),
+    refreshToken: localStorage.getItem('refreshToken'),
   };
 }
 
-// Definindo uma função para salvar tokens
+// Função para salvar tokens
 function saveTokens(token, refreshToken) {
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('refreshToken', refreshToken);
@@ -67,20 +70,30 @@ api.interceptors.response.use(
         const { refreshToken } = getTokens();
         if (refreshToken) {
           // Faz a solicitação para obter um novo token usando o refresh token
-          const response = await api.post('/user/refresh-token', { refreshToken });
+          const response = await api.post('/user/refresh-token', null, {
+            headers: {
+              'Authorization': `Bearer ${refreshToken}`
+            }
+          });
           const newToken = response.data.token;
 
           // Atualiza os tokens no armazenamento
           saveTokens(newToken, response.data.refreshToken || refreshToken);
 
+          // Garante que o user seja persistido
+          const user = response.data.user || JSON.parse(localStorage.getItem('user'));
+          localStorage.setItem('user', JSON.stringify(user));
+
           // Atualiza o cabeçalho Authorization e refaz a requisição original
           originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
+
+          console.log('Token atualizado, tá funcionando essa miseria');
           return api(originalRequest);
         }
       } catch (refreshError) {
         console.error('Erro ao atualizar o token:', refreshError);
         // Redirecionar para a tela de login caso o refresh falhe
-        window.location.href = '/logout';
+        //window.location.href = '/logout';
         return Promise.reject(refreshError);
       }
     }
@@ -88,7 +101,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
 
 // Função para buscar posts (precisa de autenticação)
 export async function getPosts() {
@@ -164,12 +176,12 @@ export async function helloworld(){
     const response = await api.get(`/helloworld`);
     return response.data;
   } catch (error) {
-    console.error('erro', error.response ? error.response.data : error.message);
+    console.error('Erro', error.response ? error.response.data : error.message);
     throw error;
   }
 }
 
-export async function getMyProfile(){
+export async function getMyProfile() {
   try {
     const response = await api.get(`/user/my-profile`);
     return response.data;
@@ -179,4 +191,30 @@ export async function getMyProfile(){
   }
 }
 
-export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld, getMyProfile };
+export async function getComments(postId) {
+  try {
+    const response = await api.get(`post/comments/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar comentários:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export async function createComment(postId, commentData) {
+  try {
+    const response = await api.post(`post/comments/${postId}`, commentData);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao criar comentário:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export function formateTimeAgo(dateFromApi){
+  const date = parseISO(dateFromApi);
+  const timeAgo = formatDistanceToNow(date, { addSuffix: true, locale: pt });
+  return timeAgo;
+}
+
+export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld, getMyProfile, getComments, formateTimeAgo, API_URL_IMAGE };
