@@ -5,8 +5,8 @@ export default function Logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
-    sessionStorage.clear();
     sessionStorage.removeItem('token');
+    sessionStorage.clear();
     
     // Redireciona para a página de login
     return <Navigate to="/" replace />;

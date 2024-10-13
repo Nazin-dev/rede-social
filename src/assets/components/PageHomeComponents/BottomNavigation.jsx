@@ -26,7 +26,7 @@ function BottomNavigation() {
   const navigate = useNavigate();
 
   function navigateUseProfile() {
-    navigate("/user-profile");
+    navigate("/user-profile/");
   }
 
   function navigateHomePage() {

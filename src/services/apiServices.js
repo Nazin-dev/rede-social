@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 axios.defaults.withCredentials = true;
 
 const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1';
@@ -81,8 +80,7 @@ api.interceptors.response.use(
       } catch (refreshError) {
         console.error('Erro ao atualizar o token:', refreshError);
         // Redirecionar para a tela de login caso o refresh falhe
-        const navigate = useNavigate();
-        navigate('/login');
+        window.location.href = '/logout';
         return Promise.reject(refreshError);
       }
     }
@@ -171,4 +169,14 @@ export async function helloworld(){
   }
 }
 
-export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld };
+export async function getMyProfile(){
+  try {
+    const response = await api.get(`/user/my-profile`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar usuário:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld, getMyProfile };

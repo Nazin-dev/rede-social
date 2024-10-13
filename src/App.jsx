@@ -5,13 +5,20 @@ import HomePage from "./assets/pages/HomePage";
 import UserProfile from "./assets/pages/UserProfile";
 import PageUserOther from "./assets/pages/PageUserOther";
 import ProtectedRoute from "./assets/components/Security/ProtectedRoute";
+import RedirectToHomeIfAuthenticated from "./assets/components/Security/RedirectToHomeIfAuthenticated";
 import Logout from "./assets/components/Security/Logout";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={
+          <>
+            <RedirectToHomeIfAuthenticated />
+            <Login />
+          </>
+          }
+        />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route
           path="/home"

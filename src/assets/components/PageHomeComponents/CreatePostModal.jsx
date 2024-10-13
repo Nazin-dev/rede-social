@@ -42,6 +42,7 @@ function CreatePostModal({ isOpen, closeModal }) {
       setPostImage(null);
       setImageName('');
       closeModal();
+      window.location.reload();
     } catch (error) {
       console.error('Erro ao criar post:', error);
     }

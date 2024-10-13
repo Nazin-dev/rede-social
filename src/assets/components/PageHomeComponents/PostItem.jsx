@@ -2,9 +2,12 @@ import '../PageHomeComponents/PostItem.css';
 import React, { useState } from 'react';
 import CommentModal from '../PageCommentComponents/CommentModal.jsx'; 
 import { useNavigate } from "react-router-dom";
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
+const urlimagem = "http://localhost:8080";
 
-function PostItem({ userProfile, userName, userLocation, postText, postImage, likes, timeAgo, initialComments }) {
+function PostItem({ userProfile, userName, userLocation, postText, postImage, likes, dateFromApi, initialComments, likedByUser }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false); // Gerencia o estado do modal de comentários
   const navigate = useNavigate();
@@ -25,11 +28,23 @@ function PostItem({ userProfile, userName, userLocation, postText, postImage, li
     setIsCommentModalOpen(false);
   }
 
+  if(likedByUser){
+    setIsLiked(true);
+  }
+
+  if(postImage === null){
+    postImage = false;
+  }
+
+  //formatar a data para quanto tempo atrás foi postado
+  const date = parseISO(dateFromApi);
+  const timeAgo = formatDistanceToNow(date, { addSuffix: true, locale: pt });
+
   return (
     <div className="post">
       <div className="post-header">
         <div className="profile-info" onClick={navigateUserOther}>
-          <img src={userProfile} alt="" className="profile-pic" />
+          <img src={urlimagem + userProfile} alt="" className="profile-pic" />
           <div className="post-info">
             <span className="username">{userName}</span>
             <span className="location">{userLocation}</span>
@@ -38,7 +53,7 @@ function PostItem({ userProfile, userName, userLocation, postText, postImage, li
         <div className="options-profile"><i className="bi bi-three-dots"></i></div>
       </div>
       <p className="post-text">{postText}</p>
-      {postImage && <img src={postImage} alt="Post" className="post-image" />}
+      {postImage && <img src={urlimagem + postImage} alt="Post" className="post-image" />}
       <div className="icons-post">
         <div className="icon like" onClick={LikeClick}>
           <i className={`bi ${isLiked ? 'bi-heart-fill liked' : 'bi-heart'}`}></i>
