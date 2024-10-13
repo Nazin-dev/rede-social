@@ -13,6 +13,10 @@ function Login() {
     navigate("/create-account"); // Redireciona para a página de criação de conta
   }
 
+  function goPasswordRecovery() {
+    navigate("/email-recovery")
+  }
+
   function loginToHomePage(e) {
     e.preventDefault();
     navigate("/home");
@@ -27,7 +31,7 @@ function Login() {
         <Input type="email" name="Email" />
         <Input type="password" name="Senha"/>
         <button type='submit' className='login-button' onClick={loginToHomePage} >Entrar</button>
-        <a  href='#' className='recover-password'>Esqueceu a senha?</a>
+        <a  href='#' className='recover-password' onClick={goPasswordRecovery}>Esqueceu a senha?</a>
         <button onClick={handleCreateAccount} type='submit' className='creat-account-button'>Criar nova conta</button>
       </form> 
     </div>

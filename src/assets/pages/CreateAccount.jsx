@@ -44,7 +44,8 @@ function CreateAccount() {
           <img className='melonzone' src={melonzone} alt="Melonzone" />
         </div>
         <CustomFileInput />
-        <Input type="text" name="Nome" />
+        <Input type="text" name="Nome de Usuário" />
+        <Input type="text" name="Nome Completo" />
         <Input type="email" name="Email" />
         <Input type="password" name="Senha" />
         
