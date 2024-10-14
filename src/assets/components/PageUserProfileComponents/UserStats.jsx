@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { API_URL_IMAGE } from '../../../services/apiServices';
 
 // Essa é parte superio do perfil de usuario onde se encontra, seguidores, postagens e seguindo.
-function UserStats({ userProfile, userName, followers, following, numbersPosts, userBio}) {
+function UserStats({ userId, userProfile, userName, followers, following, numbersPosts, userBio, colorname }) {
 
   const [isUserListingModalOpen, setUserListingModalOpen] = useState(false);
   const [isFollowingListingModalOpen, setFollowingListingModalOpen] = useState(false);
@@ -30,7 +30,7 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
       <div className="content-stats">
         <div className="profile-pic-name">
           <img src={API_URL_IMAGE + userProfile} alt="" className="profile-pic-user" />
-          <span className="name-user">{userName}</span>
+          <span className="name-user" style={{color: colorname}}>{userName}</span>
         </div>
         <div className="stats posts-profile">
           <span className="numbers-posts">{numbersPosts}</span>
@@ -49,11 +49,13 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
         <span className='user-bio'>{userBio}</span>
       </div>
       <UserListingModal 
+      id={userId}
       isOpen={isUserListingModalOpen}
       closeModal={closeUserListingModal}
       NameText="Seguidores"
       />
-      <UserListingModal 
+      <UserListingModal
+      id={userId}
       isOpen={isFollowingListingModalOpen}
       closeModal={closeFollowingListingModal}
       NameText="Seguindo"

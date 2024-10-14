@@ -1,15 +1,15 @@
 import './ProfileInfo.css';
+import '../PageUserProfileComponents/ProfileControlPosts.css';
 import UserStats from './UserStats.jsx';
 import ControlButtons from './ProfileControlButtons.jsx';
 import EditProfileModal from '../PageModalUserComponents/EditProfileModal.jsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PostItem from '../PageHomeComponents/PostItem.jsx';
 import { getMyProfile, getUserById } from '../../../services/apiServices.js';
-import { useEffect } from 'react';
 
 function ProfileInfo() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [Profile, setProfile] = useState({
+  const [profile, setProfile] = useState({
     userDTO: {},
     posts: [],
   });
@@ -44,15 +44,17 @@ function ProfileInfo() {
 
   return (
     <>
-      {Profile.userDTO && Profile.posts && (
+      {profile.userDTO && profile.posts && (
         <>
           <UserStats
-            userProfile={Profile.userDTO.img}
-            userName={Profile.userDTO.name}
-            numbersPosts={Profile.totalPosts}
-            followers={Profile.totalFollowers}
-            following={Profile.totalFollowing}
-            userBio={Profile.userDTO.bio}  
+            userId={profile.userDTO.id}
+            userProfile={profile.userDTO.img}
+            userName={profile.userDTO.username}
+            numbersPosts={profile.totalPosts}
+            followers={profile.totalFollowers}
+            following={profile.totalFollowing}
+            userBio={profile.userDTO.bio}
+            colorname={profile.userDTO.color}
           />
           <ControlButtons 
             onPrimaryFunction={handleEditProfile}
@@ -61,24 +63,26 @@ function ProfileInfo() {
           />
           <div className="control-posts">
             <p className="my-posts">Meus Posts</p>
-            {Profile.posts.map((post) => (
+            {profile.posts.map((post) => (
               <PostItem
-                userid={Profile.userDTO.id}
+                userid={profile.userDTO.id}
                 key={post.id}
-                userProfile={Profile.userDTO.img}
-                userName={Profile.userDTO.name}
-                userLocation={"No mundo da Lua"}
+                id={post.id}
+                userProfile={profile.userDTO.img}
+                userName={profile.userDTO.username}
+                userLocation={"Brasil"}
                 postText={post.text}
                 postImage={post.img ?post.img : null} 
                 likes={post.totalLikes}
                 likedByUser={post.likedByUser} 
                 dateFromApi={post.timestamp}
+                colorname={profile.userDTO.color}
               />
             ))}
           </div>
         </>
       )}
-      <EditProfileModal isOpen={isModalOpen} onClose={handleCloseModal}/>
+      <EditProfileModal user={profile.userDTO} isOpen={isModalOpen} onClose={handleCloseModal}/>
     </>
   );
 }

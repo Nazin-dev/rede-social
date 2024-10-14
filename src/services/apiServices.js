@@ -203,7 +203,7 @@ export async function getComments(postId) {
 
 export async function createComment(postId, commentData) {
   try {
-    const response = await api.post(`post/comments/${postId}`, commentData);
+    const response = await api.post(`post/comment/${postId}`, commentData);
     return response.data;
   } catch (error) {
     console.error('Erro ao criar comentário:', error.response ? error.response.data : error.message);
@@ -217,4 +217,79 @@ export function formateTimeAgo(dateFromApi){
   return timeAgo;
 }
 
-export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld, getMyProfile, getComments, formateTimeAgo, API_URL_IMAGE };
+export async function searchUsers(username) {
+  try {
+    const response = await api.get(`user/search?username=${username}`);
+    return response.data;  // Retorna a lista de usuários encontrados
+  } catch (error) {
+    console.error('Erro ao buscar usuários:', error);
+    throw error;
+  }
+}
+
+export async function followUser(userId) {
+  try {
+    const response = await api.post(`user/follow/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao seguir usuário:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export async function likePost(postId) {
+  try {
+    const response = await api.post(`post/like/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao curtir post:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export async function followOrUnfollowUser(userId) {
+  try {
+    const response = await api.post(`user/follow/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao seguir/deixar de seguir usuário:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+export async function updateUserProfile(formData) {
+  try {
+    const response = await api.put(`user/edit`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao atualizar perfil:', error);
+    throw error;
+  }
+}
+
+export async function followesOfUserID(iduser) {
+  try {
+    const response = await api.get(`user/followers/${iduser}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar seguidores:', error);
+    throw error;
+  }
+}
+
+export async function followingOfUserID(iduser) {
+  try {
+    const response = await api.get(`user/following/${iduser}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar seguindo:', error);
+    throw error;
+  }
+}
+
+
+export default { getPosts, createPost, createUser, loginUser, getUserById, helloworld, getMyProfile, getComments, searchUsers, formateTimeAgo, API_URL_IMAGE, followUser, likePost, followOrUnfollowUser, updateUserProfile, createComment, followesOfUserID, followingOfUserID };

@@ -14,7 +14,8 @@ function PostFeed({ posts }) {
           id={post.id}
           userProfile={post.user.img || Profile}
           userid={post.user.id}
-          userName={post.user.name}
+          userName={post.user.username}
+          colorname={post.user.color}
           userLocation={"Brasil"}
           postText={post.text}
           postImage={post.img}

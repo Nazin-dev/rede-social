@@ -10,18 +10,7 @@ function BottomNavigation() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Estado para armazenar os perfis de usuários
-  const [profiles, setProfiles] = useState([
-    {
-      userProfile: 'path/to/profile/image1.png',
-      userName: 'Alex_pindaiba',
-      name: 'Alex Fernandes Pindaiba da Silva'
-    },
-    {
-      userProfile: 'path/to/profile/image2.png',
-      userName: 'john_doe',
-      name: 'John Doe'
-    }
-  ]);
+  const [profiles, setProfiles] = useState([]);
 
   const navigate = useNavigate();
 

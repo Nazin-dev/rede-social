@@ -1,3 +1,4 @@
+import { API_URL_IMAGE } from '../../../services/apiServices';
 import './SearchProfileFeed.css';
 import SearchProfileItem from './SearchProfileItem';
 
@@ -5,12 +6,13 @@ function SearchProfileFeed({ profiles, onDeleteProfile }) {
   return (
     <>
       {profiles.map((profile, index) => (
-        <SearchProfileItem 
+        <SearchProfileItem
           key={index}
-          userProfile={profile.userProfile}
-          userName={profile.userName}
-          name={profile.name}
-          onDelete={() => onDeleteProfile(index)} // Função de delete para cada perfil
+          userid={profile.id}
+          userProfile={API_URL_IMAGE + profile.img} 
+          userName={profile.fullName} 
+          name={profile.username} 
+          onDelete={() => onDeleteProfile(index)}
         />
       ))}
     </>
