@@ -9,11 +9,14 @@ function UserListingFeed() {
       userProfile={Pic}
       userName="Alex_pindaiba"
       fullName="Alex Pindaiba dos Santos"
+      btnType="followers"
+      btnName="Deixar de seguir"
       />
       <UserListingItem 
       userProfile={Pic}
       userName="Alex_pindaiba"
       fullName="Alex Pindaiba dos Santos"
+      btnType="following"
       />
       <UserListingItem 
       userProfile={Pic}

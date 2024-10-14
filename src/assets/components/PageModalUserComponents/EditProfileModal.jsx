@@ -1,7 +1,21 @@
 import './EditProfileModal.css';
-import Profile from '../../img/profile/profile3.png'
+import Profile from '../../img/profile/profile3.png';
+import { useState } from 'react';
 
 function EditProfileModal({isOpen, onClose}) {
+  const [profileImage, setProfileImage] = useState(Profile);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setProfileImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   if (!isOpen) return null;
 
   return(
@@ -12,16 +26,24 @@ function EditProfileModal({isOpen, onClose}) {
           <div className="title-header">Editar Perfil</div>
         </div>
 
-        <div className="modal-profile-pic">
-          <img src={Profile} alt="Profile" className="profile-picture" />
-          <div className="edit-pic">Editar foto</div>
-        </div>
+        <form className="edit-profile-form">
+          <div className="modal-profile-pic">
+            <img src={profileImage} alt="Profile" className="profile-picture" />
+            <label className="edit-pic" htmlFor="profileImageInput">Editar foto</label>
+            <input 
+              type="file" 
+              id="profileImageInput" 
+              accept="image/*" 
+              style={{ display: 'none' }} 
+              onChange={handleImageChange} 
+            />
+          </div>
 
-        <div className="input-group">
+          <div className="input-group">
             <label>Nome</label>
             <input type="text" defaultValue="Katia Wentraib" />
           </div>
-          
+
           <div className="input-group">
             <label>Nome de Usuário</label>
             <input type="text" defaultValue="katxy" />
@@ -29,7 +51,10 @@ function EditProfileModal({isOpen, onClose}) {
 
           <div className="input-group">
             <label>Bio</label>
-            <textarea defaultValue="🎓 Estudante de Direito\n🤓 Fan de Harry Potter\n💛 Solteira\n🎂 18 years" />
+            <textarea defaultValue="🎓 Estudante de Direito
+🤓 Fan de Harry Potter
+💛 Solteira
+🎂 18 years" />
           </div>
 
           <div className="input-group">
@@ -38,8 +63,12 @@ function EditProfileModal({isOpen, onClose}) {
               <option value="Masculino">Masculino</option>
               <option value="Feminino">Feminino</option>
             </select>
-        </div>
+          </div>
 
+          <div className="submit-btn-container">
+            <button type='submit' className='button-save-changes'>Salvar Alterações</button>
+          </div>
+        </form>
       </div>
     </div>
   );

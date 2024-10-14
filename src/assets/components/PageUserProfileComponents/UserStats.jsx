@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 function UserStats({ userProfile, userName, followers, following, numbersPosts, userBio}) {
 
   const [isUserListingModalOpen, setUserListingModalOpen] = useState(false);
+  const [isFollowingListingModalOpen, setFollowingListingModalOpen] = useState(false);
 
   function openUserListingModal() {
     setUserListingModalOpen(true);
@@ -13,6 +14,14 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
 
   function closeUserListingModal() {
     setUserListingModalOpen(false);
+  }
+
+  function openFollowingListingModal() {
+    setFollowingListingModalOpen(true);
+  }
+
+  function closeFollowingListingModal() {
+    setFollowingListingModalOpen(false);
   }
 
   return(
@@ -30,7 +39,7 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
           <span className="numbers-followers">{followers}</span>
           <p className="p-followers">Seguidores</p>
         </div>
-        <div className="stats following">
+        <div className="stats following" onClick={openFollowingListingModal}>
           <span className="numbers-following">{following}</span>
           <p className="p-following">Seguindo</p>
         </div>
@@ -42,6 +51,11 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
       isOpen={isUserListingModalOpen}
       closeModal={closeUserListingModal}
       NameText="Seguidores"
+      />
+      <UserListingModal 
+      isOpen={isFollowingListingModalOpen}
+      closeModal={closeFollowingListingModal}
+      NameText="Seguindo"
       />
     </>
   );

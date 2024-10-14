@@ -121,7 +121,7 @@
 
 /* Style do botão para quando deixar de sequir */
 
-.btn-action {
+.btn-action-blue {
   background: var(--user-listing-color-follow);
   height: 33px;
   width: 100px;
@@ -133,7 +133,24 @@
   font-family: "Inter", sans-serif;
 }
 
-.btn-action:hover {
+.btn-action-grey {
+  background: var(--user-listing-color-name);
+  height: 33px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
+.btn-action-blue:hover {
   background: white;
   color: var(--user-listing-color-follow);
+}
+
+.btn-action-grey:hover {
+  background: white;
+  color: var(--user-listing-color-name);
 }

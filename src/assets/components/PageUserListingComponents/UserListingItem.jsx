@@ -1,6 +1,8 @@
 import './UserListingStyle.css';
 
-function UserListingItem({userProfile, userName, fullName}) {
+function UserListingItem({userProfile, userName, fullName, btnName="Seguir de volta", btnType}) {
+  const buttonClass = btnType === "followers" ? "btn-action-blue" : "btn-action-grey";
+
   return (
     <div className="user-listing-item">
       <div className="user-listing-details">
@@ -20,7 +22,7 @@ function UserListingItem({userProfile, userName, fullName}) {
         </div>
       </div>
       <div className="user-listing-follow-btn">
-        <button className="btn-action">Seguir de volta</button>
+        <button className={buttonClass}>{btnName}</button>
       </div>
     </div>
   );
