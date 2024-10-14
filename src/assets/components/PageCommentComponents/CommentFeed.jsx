@@ -20,8 +20,9 @@ function CommentFeed({ comments }) {
       return (
         <CommentItem
           key={comment.id}
-          userProfile={comment.userProfile}
-          userName={API_URL_IMAGE + comment.user.img}
+          userProfile={API_URL_IMAGE + comment.user.img}
+          userName={comment.user.username}
+          colorname={comment.user.color}
           commentText={comment.content}
           timeAgo={formateTimeAgo(comment.timestamp)}
         />

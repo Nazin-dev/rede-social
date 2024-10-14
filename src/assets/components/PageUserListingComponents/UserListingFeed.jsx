@@ -1,30 +1,23 @@
 import './UserListingStyle.css';
 import UserListingItem from './UserListingItem';
+import { API_URL_IMAGE } from '../../../services/apiServices';
 
-
-function UserListingFeed() {
+function UserListingFeed({ listUsers }) {
   return (
     <div className="user-listing-feed-content">
-      {/* <UserListingItem 
-      userProfile={Pic}
-      userName="Alex_pindaiba"
-      fullName="Alex Pindaiba dos Santos"
-      btnType="followers"
-      btnName="Deixar de seguir"
-      />
-      <UserListingItem 
-      userProfile={Pic}
-      userName="Alex_pindaiba"
-      fullName="Alex Pindaiba dos Santos"
-      btnType="following"
-      />
-      <UserListingItem 
-      userProfile={Pic}
-      userName="Alex_pindaiba"
-      fullName="Alex Pindaiba dos Santos"
-      /> */}
+      {listUsers.map((user) => (
+        <UserListingItem
+          key={user.id}
+          id={user.id}
+          userProfile={API_URL_IMAGE + user.img}
+          userName={user.username}
+          fullName={user.fullName}
+          btnType="followers"
+          btnName="Deixar de seguir"
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default UserListingFeed;

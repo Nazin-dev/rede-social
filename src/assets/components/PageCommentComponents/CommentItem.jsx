@@ -1,7 +1,7 @@
 import '../PageCommentComponents/CommentItem.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-function CommentItem({userProfile, userName, commentText,timeAgo}) {
+function CommentItem({userProfile, userName, commentText,timeAgo, colorname = "#fff"}) {
   return(
     <div className="comment">
       <div className="user-comment">
@@ -11,15 +11,15 @@ function CommentItem({userProfile, userName, commentText,timeAgo}) {
 
         <div className="user-content">
           <div className="user-content-header">
-            <span className="user-name">{userName}</span>
+            <span className="user-name" style={{color: colorname}}>{userName}</span>
             <span className="user-time-ago">{timeAgo}</span>
           </div>
           <div className="user-comment-text">
             <span className="user-text">{commentText}</span>
           </div>
           <div className="user-actions">
-            <div className="icon-actions-comment chat-comment"><i class="bi bi-chat-right-text"></i></div>
-            <div className="icon-actions-comment liked-comment"><i class="bi bi-heart"></i></div>
+            <div className="icon-actions-comment chat-comment"><i className="bi bi-chat-right-text"></i></div>
+            <div className="icon-actions-comment liked-comment"><i className="bi bi-heart"></i></div>
           </div>
         </div>
 

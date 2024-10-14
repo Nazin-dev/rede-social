@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import CommentFeed from '../PageCommentComponents/CommentFeed.jsx';
 import AddCommentBar from '../PageCommentComponents/AddCommentBar.jsx';
 import '../PageCommentComponents/CommentModal.css';
-import { useEffect } from 'react';
 import { getComments, createComment } from '../../../services/apiServices.js';
 
 Modal.setAppElement('#root');
@@ -11,17 +10,18 @@ Modal.setAppElement('#root');
 function CommentModal({ isOpen, closeModal, idpost }) {
   const [comments, setComments] = useState([]);
 
-  console.log(`Modal ${idpost}`);
-
-  if(isOpen){
-    fetchComments(idpost);
-  }
+  // useEffect para buscar os comentários apenas quando o modal abrir e o idpost estiver disponível
+  useEffect(() => {
+    if (isOpen && idpost) {
+      fetchComments(idpost);
+    }
+  }, [isOpen, idpost]); // Executa apenas quando `isOpen` ou `idpost` mudarem
 
   async function handleAddComment(newCommentText) {
     // Cria um novo comentário
     try {
-      const response = await createComment(idpost, { text: newCommentText });
-      fetchComments(idpost);
+      await createComment(idpost, { content: newCommentText });
+      fetchComments(idpost); // Atualiza a lista de comentários após adicionar
     } catch (error) {
       console.error('Erro ao criar comentário:', error);
     }
@@ -36,7 +36,6 @@ function CommentModal({ isOpen, closeModal, idpost }) {
       console.error('Erro ao pegar os posts', error);
     }
   };
-
 
   return (
     <Modal

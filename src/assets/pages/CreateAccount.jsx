@@ -12,7 +12,8 @@ function CreateAccount() {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("")
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -48,7 +49,8 @@ function CreateAccount() {
     // Cria um objeto FormData para enviar os dados do formulário
     const formData = new FormData();
     formData.append('file', file); // Adiciona a imagem
-    formData.append('name', name); // Adiciona o nome
+    formData.append('fullName', fullName); // Adiciona o nome
+    formData.append('username', username); // Adiciona o nome de usuário
     formData.append('email', email); // Adiciona o email
     formData.append('password', password); // Adiciona a senha
   
@@ -65,10 +67,12 @@ function CreateAccount() {
   // Função que lida com a mudança nos inputs de texto
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if (name === 'name') {
-      setName(value);
+    if (name === 'username') {
+      setUsername(value);
     } else if (name === 'email') {
       setEmail(value);
+    } else if (name === 'fullName') {
+      setFullName(value);
     } else if (name === 'password') {
       setPassword(value);
       validatePassword(event.target.value);
@@ -89,7 +93,7 @@ function CreateAccount() {
         </div>
         <CustomFileInput fileName={fileName} onChange={handleFileChange}/>
         <Input type="text" name="username" placeholder="Nome Usuário" onChange={handleInputChange} />
-        <Input type="text" name="name" placeholder="Nome Completo" onChange={handleInputChange}/>
+        <Input type="text" name="fullName" placeholder="Nome Completo" onChange={handleInputChange}/>
         <Input type="email" name="email" placeholder="E-mail" onChange={handleInputChange} />
         <Input type="password" name="password" placeholder="Senha" onChange={handleInputChange} />
         
