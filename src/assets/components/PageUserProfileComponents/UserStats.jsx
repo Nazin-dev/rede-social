@@ -1,6 +1,7 @@
 import UserListingModal from '../PageUserListingComponents/UserListingModal';
 import '../PageUserProfileComponents/UserStats.css';
 import React, { useState } from 'react';
+import { API_URL_IMAGE } from '../../../services/apiServices';
 
 // Essa é parte superio do perfil de usuario onde se encontra, seguidores, postagens e seguindo.
 function UserStats({ userProfile, userName, followers, following, numbersPosts, userBio}) {
@@ -28,7 +29,7 @@ function UserStats({ userProfile, userName, followers, following, numbersPosts, 
     <>
       <div className="content-stats">
         <div className="profile-pic-name">
-          <img src={userProfile} alt="" className="profile-pic-user" />
+          <img src={API_URL_IMAGE + userProfile} alt="" className="profile-pic-user" />
           <span className="name-user">{userName}</span>
         </div>
         <div className="stats posts-profile">
