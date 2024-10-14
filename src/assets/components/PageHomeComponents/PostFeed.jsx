@@ -1,7 +1,6 @@
 import '../PageHomeComponents/PostFeed.css';
 import PostItem from '../PageHomeComponents/PostItem.jsx'
-import ImagePost from '../../img/post.png'
-import Profile from '../../img/profile/profile.png'
+
 
 
 function PostFeed({ posts }) {

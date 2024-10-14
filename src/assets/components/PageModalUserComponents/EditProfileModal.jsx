@@ -1,5 +1,4 @@
 import './EditProfileModal.css';
-import Profile from '../../img/profile/profile3.png';
 import { useState } from 'react';
 
 function EditProfileModal({isOpen, onClose}) {

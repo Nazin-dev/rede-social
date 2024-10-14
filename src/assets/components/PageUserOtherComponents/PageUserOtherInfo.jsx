@@ -1,5 +1,4 @@
 import ControlButtons from "../PageUserProfileComponents/ProfileControlButtons.jsx";
-import ControlPosts from "../PageUserProfileComponents/ProfileControlPosts.jsx";
 import UserStats from "../PageUserProfileComponents/UserStats.jsx"
 import PostItem from "../PageHomeComponents/PostItem.jsx";
 import React, { useState, useEffect } from "react";

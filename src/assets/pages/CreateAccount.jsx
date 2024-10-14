@@ -88,7 +88,8 @@ function CreateAccount() {
           <img className='melonzone' src={melonzone} alt="Melonzone" />
         </div>
         <CustomFileInput fileName={fileName} onChange={handleFileChange}/>
-        <Input type="text" name="name" placeholder="Nome" onChange={handleInputChange} />
+        <Input type="text" name="username" placeholder="Nome Usuário" onChange={handleInputChange} />
+        <Input type="text" name="name" placeholder="Nome Completo" onChange={handleInputChange}/>
         <Input type="email" name="email" placeholder="E-mail" onChange={handleInputChange} />
         <Input type="password" name="password" placeholder="Senha" onChange={handleInputChange} />
         

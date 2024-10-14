@@ -62,7 +62,7 @@ function Login() {
         <Input type="password" name="password" placeholder="Senha" onChange={handleInputChange} />
         <button type='submit' className='login-button' >Entrar</button>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
-        <a  href='#' className='recover-password'>Esqueceu a senha?</a>
+        <a  href='#' className='recover-password' onClick={goPasswordRecovery}>Esqueceu a senha?</a>
         <button onClick={handleCreateAccount} type='submit' className='creat-account-button'>Criar nova conta</button>
       </form> 
     </div>
