@@ -1,7 +1,7 @@
 
 .post-feed {
   flex-grow: 1;
-  margin-top: 90px; /* Compensa a altura do navbar */
+  margin-top: 60px; /* Compensa a altura do navbar */
   overflow-y: auto;
   padding: 0; /* Remove padding extra */
   width: 100vw; /* Garante que ocupe 100% da largura da tela */ 
@@ -11,4 +11,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 60px;
 }
