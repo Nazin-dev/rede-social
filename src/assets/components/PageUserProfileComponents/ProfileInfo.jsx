@@ -1,4 +1,5 @@
 import './ProfileInfo.css';
+import './ProfileControlPosts.css';
 import UserStats from './UserStats.jsx';
 import ControlButtons from './ProfileControlButtons.jsx';
 import EditProfileModal from '../PageModalUserComponents/EditProfileModal.jsx';

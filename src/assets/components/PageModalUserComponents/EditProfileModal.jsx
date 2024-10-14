@@ -2,7 +2,7 @@ import './EditProfileModal.css';
 import { useState } from 'react';
 
 function EditProfileModal({isOpen, onClose}) {
-  const [profileImage, setProfileImage] = useState(Profile);
+  const [profileImage, setProfileImage] = useState();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
