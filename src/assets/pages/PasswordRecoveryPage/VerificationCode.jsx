@@ -23,7 +23,7 @@ function VerificationCode() {
         <img className='melonzone' src={melonzone} alt="" />
         </div>
         <p className='info-user'>Insira aqui o código de verificação.</p>
-        <Input type="text" name="Código de verificação" />
+        <Input type="text" placeholder="Código de verificação" />
         <button type='submit' className='recovery-button' onClick={recoverPassword}>Continuar</button>
         <a href='#' className='back-to-login' onClick={goToLogin}>Voltar para o login?</a>
       </form> 

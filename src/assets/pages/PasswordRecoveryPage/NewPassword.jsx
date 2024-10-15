@@ -18,7 +18,7 @@ function NewPassword() {
         <img className='melonzone' src={melonzone} alt="" />
         </div>
         <p className='info-user'>Insira aqui a sua nova senha.</p>
-        <Input type="text" name="Nova Senha" />
+        <Input type="text" placeholder="Nova Senha" />
         <button type='submit' className='recovery-button' onClick={goToLogin}>Continuar</button>
         <a href='#' className='back-to-login' onClick={goToLogin}>Voltar para o login?</a>
       </form> 

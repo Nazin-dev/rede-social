@@ -23,7 +23,7 @@ function PasswordRecovery() {
         <img className='melonzone' src={melonzone} alt="" />
         </div>
         <p className='info-user'>Insira seu e-mail aqui e enviaremos um código de recuperação.</p>
-        <Input type="email" name="Email" />
+        <Input type="email" placeholder="Email" />
         <button type='submit' className='recovery-button' onClick={recoverPassword}>Continuar</button>
         <a href='#' className='back-to-login' onClick={goToLogin}>Voltar para o login?</a>
       </form> 
