@@ -3,8 +3,8 @@ import { formatDistanceToNow, parseISO } from 'date-fns';
 import { pt } from 'date-fns/locale';
 axios.defaults.withCredentials = true;
 
-const API_URL = import.meta.env.API_URL || 'http://localhost:8080/api/v1';
-export const API_URL_IMAGE = import.meta.env.API_URL_IMAGE || 'http://localhost:8080';
+const API_URL = 'https://api.melonzone.com.br/api/v1';
+export const API_URL_IMAGE = 'https://api.melonzone.com';
 
 // Configuração inicial do axios para reutilizar em todas as requisições
 const api = axios.create({
